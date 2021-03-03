@@ -1,38 +1,158 @@
-.App {
-  text-align: center;
+body{
+    background-color: #C8D0D2;
+    margin: 0;
+    font-family: sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+    width: 900px;
+    max-width: 95%;
+    margin: 1rem auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: white;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+    padding: 0 1.5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.form-group {
+    margin: .5rem;
 }
 
-.App-link {
-  color: #61dafb;
+.form-group > label {
+    color: #777;
+    font-size: .75rem;
+    margin-bottom: .25rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button {
+    background-color: hsl(200, 100%, 50%);
+    color: white;
+    padding: .5em 1em;
+    border-radius: .3em;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: hsl(200, 100%, 35%);
+    color: white;
+    padding: .5em 1em;
+    border-radius: .3em;
+    border: none;
+    cursor: pointer;
+}
+
+.card-grid {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: .25rem;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+    background-color: white;
+    transform-style: preserve-3d;
+    transition: 500ms;
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+    cursor: pointer;
+
+}
+
+.card:hover {
+    --translate-y : -2px;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+}
+
+.card.flip {
+    --rotate-y: 180deg;
+}
+
+.card .front {
+    left: 0;
+}
+
+.front.wrong {
+    background-color: red;
+}
+
+.front.wrong .flashcard-opiton {
+    pointer-events: none;
+}
+
+.front.right {
+    background-color: #149014;
+}
+
+.card .front, .card .back {
+    position: absolute;
+    padding: 1rem;
+    backface-visibility: hidden;
+    border-radius: .25rem;
+}
+
+.card .back {
+    transform: rotateY(180deg);
+    text-align: center;
+}
+
+.flashcard-opitons {
+    margin-top: .5rem;
+    font-size: .75rem;
+    font-weight: bold;
+}
+
+.flashcard-opiton {
+    margin-bottom: .25rem;
+    border-radius: .3rem;
+    border: 1px solid;
+    padding: .1em 0.2rem;
+}
+
+.front.right .flashcard-opiton {
+    background-color: #bff3bf;
+}
+
+.front.wrong .flashcard-opiton {
+    background-color: #f9b5b5;
+}
+
+.flashcard-opiton:hover {
+    background-color: hsl(200, 100%, 50%);
+}
+
+.flashcard-option:first-child {
+    margin-top: 0;
+}
+
+.flashcard-opiton.selected {
+    background-color: #ebebeb !important;
+}
+
+.show-answer {
+    font-size: .75rem;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.yourscore {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: hsl(200deg 100% 50%);
+    background: gray;
+    margin-top: 20px;
 }
